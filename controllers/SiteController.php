@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use Symfony\Component\VarDumper\VarDumper;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -124,5 +125,26 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionRegister()
+    {
+        $model = new \app\models\User();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                $model->auth_key = Yii::$app->security->generateRandomString();
+                $model->password = Yii::$app->security->generatePasswordHash($model->password);
+            } 
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Вы успешно зарегитрировались');
+                Yii::$app->session->setFlash('info', 'Вы успешно вошли');
+                return $this->goHome();
+            } else {
+                VarDumper::dump($model->errors, 10, true); die;
+            }
+        }
+        return $this->render('register', [
+            'model' => $model,
+        ]);
     }
 }

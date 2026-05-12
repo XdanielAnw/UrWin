@@ -35,9 +35,9 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             [['role'], 'default', 'value' => 0],
-            [['login', 'password', 'full_name', 'email', 'phone', 'auth_key'], 'required'],
+            [['login', 'password', 'full_name', 'email', 'phone'], 'required'],
             [['role'], 'integer'],
-            [['login', 'password', 'full_name', 'email', 'auth_key'], 'string', 'max' => 255],
+            [['login', 'password', 'full_name', 'email'], 'string', 'max' => 255],
             [['phone'], 'string', 'max' => 17],
             [['login'], 'unique'],
         ];
@@ -50,11 +50,11 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'login' => 'Login',
-            'password' => 'Password',
-            'full_name' => 'Full Name',
-            'email' => 'Email',
-            'phone' => 'Phone',
+            'login' => 'Логин',
+            'password' => 'Пароль',
+            'full_name' => 'ФИО',
+            'email' => 'Почта',
+            'phone' => 'Телефон',
             'auth_key' => 'Auth Key',
             'role' => 'Role',
         ];
