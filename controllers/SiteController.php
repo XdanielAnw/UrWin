@@ -140,9 +140,10 @@ class SiteController extends Controller
                 Yii::$app->session->setFlash('success', 'Вы успешно зарегитрировались');
                 Yii::$app->session->setFlash('info', 'Вы успешно вошли');
                 return $this->goHome();
-            } else {
-                VarDumper::dump($model->errors, 10, true); die;
             }
+            // } else {
+            //     VarDumper::dump($model->errors, 10, true); die;
+            // }
         }
         return $this->render('register', [
             'model' => $model,

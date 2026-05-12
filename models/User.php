@@ -90,7 +90,11 @@ class User extends ActiveRecord implements IdentityInterface
             [['role'], 'integer'],
             [['login', 'password', 'full_name', 'email'], 'string', 'max' => 255],
             [['phone'], 'string', 'max' => 17],
+            [['password'], 'string', 'min' => 6, 'message' => 'Не менее 6 символов'],
             [['login'], 'unique'],
+            ['email', 'email'],
+            [['full_name'], 'match', 'pattern' => '/^[а-яё\s]+$/ui', 'message' => 'Только символы кириллицы и пробелы'],
+            [['phone'], 'match', 'pattern' => '/^\+7\([\d]{3}\)[\d]{3}-[\d]{2}-[\d]{2}$/', 'message' => 'Номер в формате +7(ххх)ххх-хх-хх'],
         ];
     }
 
