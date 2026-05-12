@@ -136,6 +136,7 @@ class SiteController extends Controller
                 $model->password = Yii::$app->security->generatePasswordHash($model->password);
             } 
             if ($model->save()) {
+                Yii::$app->user->login($model, 24 * 3600);
                 Yii::$app->session->setFlash('success', 'Вы успешно зарегитрировались');
                 Yii::$app->session->setFlash('info', 'Вы успешно вошли');
                 return $this->goHome();
