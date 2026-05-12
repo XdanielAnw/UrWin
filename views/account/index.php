@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Application;
+use yii\bootstrap5\LinkPager;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -25,9 +26,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= ListView::widget([
         'dataProvider' => $dataProvider,
         'itemOptions' => ['class' => 'item'],
-        'itemView' => function ($model, $key, $index, $widget) {
-            return Html::a(Html::encode($model->id), ['view', 'id' => $model->id, 'user_id' => $model->user_id]);
-        },
+        'layout' => "{summary}\n<div class='my-3'>{items}</div>\n{pager}",
+        'itemView' => 'item',
+        'pager' =>[ 
+            'class' => LinkPager::class
+        ],
+
     ]) ?>
 
     <?php Pjax::end(); ?>
