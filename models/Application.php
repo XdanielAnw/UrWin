@@ -51,15 +51,15 @@ class Application extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
+            'user_id' => 'Пользователь',
             'created_at' => 'Created At',
-            'service_id' => 'Service ID',
-            'address' => 'Address',
-            'cantact' => 'Cantact',
-            'date' => 'Date',
-            'time' => 'Time',
-            'pay_type_id' => 'Pay Type ID',
-            'status_id' => 'Status ID',
+            'service_id' => 'Тип услуги',
+            'address' => 'Адрес',
+            'cantact' => 'Контактные данные',
+            'date' => 'Дата',
+            'time' => 'Время',
+            'pay_type_id' => 'Тип оплаты',
+            'status_id' => 'Статус',
         ];
     }
 

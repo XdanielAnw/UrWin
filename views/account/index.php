@@ -9,15 +9,15 @@ use yii\widgets\Pjax;
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Applications';
+$this->title = 'Заявка';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="application-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
 
     <p>
-        <?= Html::a('Create Application', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать заявку', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
