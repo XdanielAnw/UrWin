@@ -12,7 +12,7 @@ use Yii;
  * @property string $created_at
  * @property int $service_id
  * @property string $address
- * @property string $cantact
+ * @property string $contact
  * @property string $date
  * @property string $time
  * @property int $pay_type_id
@@ -36,11 +36,11 @@ class Application extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'service_id', 'address', 'cantact', 'date', 'time', 'pay_type_id', 'status_id'], 'required'],
+            [['user_id', 'service_id', 'address', 'contact', 'date', 'time', 'pay_type_id', 'status_id'], 'required'],
             [['user_id', 'service_id', 'pay_type_id', 'status_id'], 'integer'],
             [['created_at', 'date', 'time'], 'safe'],
             [['address'], 'string', 'max' => 255],
-            [['cantact'], 'string', 'max' => 17],
+            [['contact'], 'string', 'max' => 17],
         ];
     }
 
@@ -55,7 +55,7 @@ class Application extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'service_id' => 'Тип услуги',
             'address' => 'Адрес',
-            'cantact' => 'Контактные данные',
+            'contact' => 'Контактные данные',
             'date' => 'Дата',
             'time' => 'Время',
             'pay_type_id' => 'Тип оплаты',
@@ -63,4 +63,24 @@ class Application extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getUser()
+    {
+        return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
+
+    public function getService()
+    {
+        return $this->hasOne(Service::class, ['id' => 'service_id']);
+    }
+
+    public function getStatus()
+    {
+        return $this->hasOne(Status::class, ['id' => 'status_id']);
+    }
+    public function getPayType()
+    {
+        return $this->hasOne(PayType::class, ['id' => 'pay_type_id']);
+    }
 }
+
+

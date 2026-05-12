@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_at',
             'service_id',
             'address',
-            'cantact',
+            'contact',
             'date',
             'time',
             'pay_type_id',

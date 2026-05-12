@@ -3,6 +3,9 @@
 namespace app\controllers;
 
 use app\models\Application;
+use app\models\Status;
+use Symfony\Component\VarDumper\VarDumper;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -40,7 +43,6 @@ class AccountController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Application::find(),
-            /*
             'pagination' => [
                 'pageSize' => 50
             ],
@@ -50,7 +52,6 @@ class AccountController extends Controller
                     'user_id' => SORT_DESC,
                 ]
             ],
-            */
         ]);
 
         return $this->render('index', [
@@ -61,7 +62,7 @@ class AccountController extends Controller
     /**
      * Displays a single Application model.
      * @param int $id ID
-     * @param int $user_id User ID
+     * @param int $user_id Пользователь
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -82,8 +83,16 @@ class AccountController extends Controller
         $model = new Application();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id, 'user_id' => $model->user_id]);
+            if ($model->load($this->request->post())) {
+                $model->user_id = Yii::$app->user->id;
+                $model->status_id = Status::getAliasStatusId("new");
+
+                if ($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                } else {
+                    VarDumper::dump($model->errors, 10, true);
+                    die;
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -98,7 +107,7 @@ class AccountController extends Controller
      * Updates an existing Application model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
-     * @param int $user_id User ID
+     * @param int $user_id Пользователь
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -119,7 +128,7 @@ class AccountController extends Controller
      * Deletes an existing Application model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
-     * @param int $user_id User ID
+     * @param int $user_id Пользователь
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -134,7 +143,7 @@ class AccountController extends Controller
      * Finds the Application model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @param int $user_id User ID
+     * @param int $user_id Пользователь
      * @return Application the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */

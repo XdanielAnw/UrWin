@@ -5,12 +5,14 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "PayType".
+ * This is the model class for table "Service".
  *
  * @property int $id
  * @property string $title
+ *
+ * @property Application[] $applications
  */
-class PayType extends \yii\db\ActiveRecord
+class Service extends \yii\db\ActiveRecord
 {
 
 
@@ -19,7 +21,7 @@ class PayType extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'PayType';
+        return 'Service';
     }
 
     /**
@@ -44,12 +46,20 @@ class PayType extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function getPayType()
+    /**
+     * Gets query for [[Applications]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getApplications()
     {
-        return static::find()
-            ->select('title')
-            ->indexBy('id')
-            ->column();
+        return $this->hasMany(Application::class, ['service_id' => 'id']);
     }
 
+    public static function getService(){
+        return static::find()
+        ->select('title')
+        ->indexBy('id')
+        ->column();
+    }
 }

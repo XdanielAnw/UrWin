@@ -18,7 +18,7 @@ class ApplicationSearch extends Application
     {
         return [
             [['id', 'user_id', 'service_id', 'pay_type_id', 'status_id'], 'integer'],
-            [['created_at', 'address', 'cantact', 'date', 'time'], 'safe'],
+            [['created_at', 'address', 'contact', 'date', 'time'], 'safe'],
         ];
     }
 
@@ -70,7 +70,7 @@ class ApplicationSearch extends Application
         ]);
 
         $query->andFilterWhere(['like', 'address', $this->address])
-            ->andFilterWhere(['like', 'cantact', $this->cantact]);
+            ->andFilterWhere(['like', 'contact', $this->contact]);
 
         return $dataProvider;
     }

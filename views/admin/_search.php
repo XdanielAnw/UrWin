@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'address') ?>
 
-    <?php // echo $form->field($model, 'cantact') ?>
+    <?php // echo $form->field($model, 'contact') ?>
 
     <?php // echo $form->field($model, 'date') ?>
 

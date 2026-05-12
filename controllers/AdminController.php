@@ -50,7 +50,7 @@ class AdminController extends Controller
     /**
      * Displays a single Application model.
      * @param int $id ID
-     * @param int $user_id User ID
+     * @param int $user_id Пользователь
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -87,7 +87,7 @@ class AdminController extends Controller
      * Updates an existing Application model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
-     * @param int $user_id User ID
+     * @param int $user_id Пользователь
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -108,7 +108,7 @@ class AdminController extends Controller
      * Deletes an existing Application model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
-     * @param int $user_id User ID
+     * @param int $user_id Пользователь
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -123,7 +123,7 @@ class AdminController extends Controller
      * Finds the Application model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @param int $user_id User ID
+     * @param int $user_id Пользователь
      * @return Application the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */

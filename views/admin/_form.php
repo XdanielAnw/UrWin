@@ -20,8 +20,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'cantact')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'date')->textInput() ?>
 
     <?= $form->field($model, 'time')->textInput() ?>
