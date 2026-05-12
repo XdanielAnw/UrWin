@@ -1,0 +1,42 @@
+git init
+
+git add .
+
+git status 
+
+git commit -m "1.0 создание гит репозитория"
+
+создал репозиторий на git hub 
+
+git remote add origin https://github.com/XdanielAnw/Gruzovichkov-DEMO-EXAM.git
+
+git remote -v
+
+git branch -M main
+
+git push -u origin main
+
+___
+
+git status
+
+git add .
+
+git commit -m "Добавил страницу создания заявки"
+
+git push
+
+
+
+
+item и отображение
+
+перенос на админа 
+
+правильное отображение для админа и чела дефолтного 
+
+before action 
+
+слайдер 
+
+изменение статуса админа
